@@ -14,6 +14,10 @@ passangerRouter.
     route("/add").
     post(passangerAttachment, passangerController.addPassanger)
 
+passangerRouter.
+    route("/").
+    get(passangerController.getPassanger)
+
 
 
 module.exports = passangerRouter

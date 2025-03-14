@@ -11,7 +11,7 @@ const addPassanger = async (req, res, next) => {
         const idCardLocalPath = req.files?.id_card?.[0]?.path;
 
         console.log(photoLocalPath, idCardLocalPath);
-        
+
 
         if (!photoLocalPath || !idCardLocalPath) {
             return res.status(400).json({ message: "Both photo and ID card files are required" });
@@ -47,6 +47,8 @@ const addPassanger = async (req, res, next) => {
 
 const getPassanger = async (req, res, next) => {
     try {
+        const passangerList = await Passanger.find({})
+        res.status(200).json({ sucess: true, passangerList })
 
     } catch (error) {
         next(error)
@@ -55,3 +57,5 @@ const getPassanger = async (req, res, next) => {
 
 
 module.exports = { addPassanger, getPassanger }
+
+
