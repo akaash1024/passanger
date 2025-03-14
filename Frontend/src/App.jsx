@@ -1,13 +1,12 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-
 import { AuthProvider } from "../AuthContextStore";
 import { ToastContainer } from "react-toastify";
 
-
-import AddPassengers from "./Components/Pages/AddPasanger";
 import { AppLayout } from "./Components/Layout/AppLayout";
 import { ErrorPage } from "./Components/Pages/ErrorPage";
+import AddPassengers from "./Components/Pages/AddPassanger";
+import { PassangerList } from "./Components/Pages/PassangerList";
 
 const router = createBrowserRouter([
   {
@@ -15,8 +14,8 @@ const router = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <ErrorPage />,
     children: [
-      
       { path: "/", element: <AddPassengers /> },
+      { path: "/list", element: <PassangerList /> },
     ],
   },
 ]);
