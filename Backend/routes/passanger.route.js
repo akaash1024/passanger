@@ -7,12 +7,16 @@ const passangerRouter = require("express").Router()
 
 
 const passangerAttachment = upload.fields([
-    { name: "photo", maxCount: 1 },
-    { name: "id_card", maxCount: 1 }
-])
-passangerRouter.
-    route("/add").
-    post(passangerAttachment, passangerController.addPassanger)
+    { name: /passengers\[\d+\]\[photo\]/, maxCount: 20 },  // Allow up to 20 passenger photos
+    { name: /passengers\[\d+\]\[id_card\]/, maxCount: 20 } // Allow up to 20 passenger ID cards
+]);
+
+
+const alternativePassangerAttachment = upload.any();
+
+passangerRouter
+    .route("/add")
+    .post(alternativePassangerAttachment, passangerController.addPassanger);
 
 passangerRouter.
     route("/").
